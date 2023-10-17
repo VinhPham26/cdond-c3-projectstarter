@@ -91,7 +91,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       # Checkout code from git
-      - checkout
+        - checkout
       # Restore from cache
       # Your job code here
       - run:
@@ -107,7 +107,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
         # Checkout code from git
-        - checkout
+            - checkout
         # Restore from cache
         # Your job code here
             cd frontend
