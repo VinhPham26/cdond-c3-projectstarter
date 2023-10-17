@@ -32,7 +32,7 @@ commands:
               exit 1
             fi
             
-jobs:
+jobs:   
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -106,10 +106,10 @@ jobs:
       # Docker image here
       - image: circleci/node:13.8.0
     steps:
-      # Checkout code from git
-      - checkout
-      # Restore from cache
-      # Your job code here
+        # Checkout code from git
+        - checkout
+        # Restore from cache
+        # Your job code here
         cd frontend
         npm install
         ## npm install oauth-sign@^0.9.0
@@ -120,10 +120,10 @@ jobs:
       # Docker image here
       - image: circleci/node:13.8.0
     steps:
-      # Checkout code from git
-      - checkout
-      # Restore from cache
-      # Your job code here
+        # Checkout code from git
+        - checkout
+        # Restore from cache
+        # Your job code here
         cd backend
         npm install
         ## npm install oauth-sign@^0.9.0
