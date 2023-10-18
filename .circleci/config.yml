@@ -327,9 +327,13 @@ jobs:
       - run:
           name: Install aws dependencies
           command: |
-            npm install -y tar gzip curl
-            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
-            npm install -y nodejs      
+            apk add --update --no-cache tar      
+            apk add --update --no-cache gzip
+            apk add --update --no-cache nodejs
+            apk add --update --no-cache npm
+            apk add --update --no-cache aws-cli
+            apk add --update --no-cache ansible
+            apk add --update --no-cache curl
       - run:
           name: Install Ansible
           command: |
