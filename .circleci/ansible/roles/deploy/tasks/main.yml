@@ -19,7 +19,7 @@
     sudo apt-get install -y npm
     cd ~/backend-app
     npm i
-    npm install -g ts-node
+
   environment:
     ENVIRONMENT: production
     NODE_ENV: production
