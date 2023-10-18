@@ -8,6 +8,10 @@
   unarchive:
     src: artifact.tar.gz
     dest: ~/backend-app
+    
+- name: "Testing env variable"
+  debug:
+    msg: "My env variable is: '{{ lookup('env', 'TYPEORM_ENTITIES') }}'"
 
 - name: "Install dependencies"
   shell: |
@@ -30,6 +34,11 @@
 
 - name: "Start backend application with PM2"
   shell: |
+    export TYPEORM_HOST="{{ lookup('env', 'TYPEORM_HOST') }}"
+    export TYPEORM_ENTITIES="{{ lookup('env', 'TYPEORM_ENTITIES') }}"
+    export TYPEORM_USERNAME="{{ lookup('env', 'TYPEORM_USERNAME') }}"
+    export TYPEORM_PASSWORD="{{ lookup('env', 'TYPEORM_PASSWORD') }}"
+    export TYPEORM_DATABASE="{{ lookup('env', 'TYPEORM_DATABASE') }}"
     cd ~/backend-app/
     pm2 stop default
     pm2 delete default
