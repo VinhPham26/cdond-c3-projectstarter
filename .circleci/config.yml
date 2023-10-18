@@ -561,8 +561,8 @@ workflows:
           filters:
             branches:
               only: [master]
-      - configure-prometheus:
-          requires: [deploy-infrastructure]
+      # - configure-prometheus:
+          # requires: [deploy-infrastructure]
       - configure-infrastructure:
           requires: [configure-prometheus]
       - run-migrations:
