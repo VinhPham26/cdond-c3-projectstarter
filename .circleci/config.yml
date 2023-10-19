@@ -561,10 +561,10 @@ workflows:
           filters:
             branches:
               only: [master]
-      # - configure-prometheus:
-          # requires: [deploy-infrastructure]
-      - configure-infrastructure:
+      - configure-prometheus:
           requires: [deploy-infrastructure]
+      - configure-infrastructure:
+          requires: [configure-prometheus]
       - run-migrations:
           requires: [configure-infrastructure]
       - deploy-frontend:
@@ -576,4 +576,4 @@ workflows:
       - cloudfront-update:
          requires: [smoke-test]
       - cleanup:
-          requires: [cloudfront-update]
+          requires: [cloudfront-update, configure-prometheus]
