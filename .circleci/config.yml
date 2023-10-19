@@ -459,6 +459,7 @@ jobs:
             sudo ./aws/install
       - run:
           name: Update cloudfront distribution
+          no_output_timeout: 30m
           command: |
             # your code here
             export OldWorkflow_ID=$(aws cloudformation \
