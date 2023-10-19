@@ -523,7 +523,7 @@ jobs:
       - run:
           name: Fetching OldStack Workflow ID
           command: |
-            your code here
+            # your code here
             export OldWorkflowID=$(aws cloudformation \
             list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
             --no-paginate --output text)
@@ -534,7 +534,7 @@ jobs:
             echo Stack names: "${STACKS[@]}"
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
-              your code here
+              # your code here
               echo "----------------------Delete Confirmed-------------------------------------"
               aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
               aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
