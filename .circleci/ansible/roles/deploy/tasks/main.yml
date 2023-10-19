@@ -8,38 +8,14 @@
   unarchive:
     src: artifact.tar.gz
     dest: ~/backend-app
-    
-- name: "Testing env variable"
-  debug:
-    msg: "My env variable is: '{{ lookup('env', 'TYPEORM_ENTITIES') }}'"
 
 - name: "Install dependencies"
   shell: |
-    sudo apt update
-    sudo apt-get install -y npm
     cd ~/backend-app
     npm i
 
-  environment:
-    ENVIRONMENT: production
-    NODE_ENV: production
-    TYPEORM_CONNECTION: postgres
-    TYPEORM_MIGRATIONS_DIR: ./src/migrations
-    TYPEORM_ENTITIES: ./src/modules/**/*.entity.ts
-    TYPEORM_MIGRATIONS: ./src/migrations/*.ts
-    TYPEORM_HOST: database-1.cbu4bvtiwda2.us-west-2.rds.amazonaws.com
-    TYPEORM_PORT: 5432
-    TYPEORM_USERNAME: postgres1
-    TYPEORM_PASSWORD: khanhvinh
-    TYPEORM_DATABASE: postgres
-
 - name: "Start backend application with PM2"
   shell: |
-    export TYPEORM_HOST="{{ lookup('env', 'TYPEORM_HOST') }}"
-    export TYPEORM_ENTITIES="{{ lookup('env', 'TYPEORM_ENTITIES') }}"
-    export TYPEORM_USERNAME="{{ lookup('env', 'TYPEORM_USERNAME') }}"
-    export TYPEORM_PASSWORD="{{ lookup('env', 'TYPEORM_PASSWORD') }}"
-    export TYPEORM_DATABASE="{{ lookup('env', 'TYPEORM_DATABASE') }}"
     cd ~/backend-app/
     pm2 stop default
     pm2 delete default
